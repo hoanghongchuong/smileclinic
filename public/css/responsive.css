@@ -1,0 +1,224 @@
+@media (min-width: 768px) and (max-width: 1200px) {
+    .filter-option select {
+        margin-bottom: 10px;
+    }
+    .header-nav li a{
+        font-size: 16px;
+    }
+    .title-plus{
+        font-size: 16px;
+        padding: 8px 20px;
+    }
+
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    .header-nav ul li{
+        margin-left: 10px;
+    }
+
+    .abs1{
+        bottom: 50px;
+    }
+    .abs2{
+        left: 0;
+        right: auto;
+    }
+    .newsItem-image{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .logo.visible-mobile {
+        display: none;
+    }
+}
+@media screen and (max-width: 767px) {
+    .visible-desktop{
+        display: none;
+    }
+    .visible-mobile{
+        display: block;
+    }
+    .logo{
+        text-align: center;
+    }
+    .logo img{
+        height: 60px;
+        object-fit: cover;
+    }
+    .banner {
+        margin-top: 0;
+    }
+    .product-index .owl-nav{
+        display: none;
+    }
+    .header-func {
+        position: relative;
+        margin: 0;
+        padding: 5px 0;
+    }
+    .header-func #cd-menu-trigger{
+        left: 0;
+        top: 5px;
+        width: 40px;
+        height: 36px;
+    }
+    .header{
+       padding: 5px 0;
+    }
+    .header .col-md-10{
+        border-top: 1px solid #ccc;
+        margin-top: 10px;
+    }
+    .search-mobile {
+        padding-left: 15px;
+        margin-top: 10px;
+    }
+    .search-mobile input,
+    .search-mobile button{
+        border-radius: 0 !important;
+    }
+    .search-mobile input{
+        width: 180px;
+    }
+    .my-service .row > div:hover {
+        transform: scale(1.0);
+        background: #fff;
+        color: #797979;
+    }
+    .my-service .row > div:hover a,
+    .my-service .row > div:hover p{
+        color: #797979;
+    }
+    .application-item {
+        margin-bottom: 10px;
+    }
+    #cd-lateral-nav {
+        background: #f1592a;
+    }
+    .project-info {
+        margin-top: 10px;
+    }
+    .news-detail h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .news-detail img {
+        width: 100%;
+    }
+    .title-product{
+        font-size: 24px;
+    }
+    .table-responsive {
+        display: block;
+    }
+    .header{
+        background: #fff;
+    }
+    .register-pdl,
+    .register-pdr{
+        padding: 0 15px;
+    }
+    .title-hot-news a{
+        font-size: 18px !important;
+    }
+    .project-index div.owl-prev{
+        left: 0 !important;
+    }
+    .project-index div.owl-next{
+        right: 0 !important;
+    }
+    .news-plus:first-child{
+        margin-top: 15px;
+    }
+}
+@media (min-width: 568px) and (max-width: 767px){
+    .product-index_item {
+        width: 50%;
+    }
+    .my-service .col-xs-12,
+    .application .col-xs-12,
+    .project-plus .col-xs-12{
+        width: 50%;
+    }
+    .product-item {
+        width: calc((100% - 2 * 15px) / 2);
+        width: -webkit-calc((100% - 2 * 15px) / 2);
+    }
+    .product-item:nth-child(3n){
+        margin-right: 15px;
+    }
+    .product-item:nth-child(2n){
+        margin-right: 0;
+    }
+    .product-info {
+        padding-bottom: 60px;
+    }
+    .news-item{
+        width: calc((100% - 15px) / 2);
+        width: -webkit-calc((100% - 15px) / 2);
+        margin-right: 15px
+    }
+    .news-item:nth-child(2n){
+        margin-right: 0;
+    }
+    .newsItem-image{
+        width: 100%;
+        max-width: 100%;
+    }
+    .footer-percent .col-md-3{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 567px) {
+    .product-index_item {
+        width: 100%;
+    }
+    .good-choice p{
+        text-align: justify;
+    }
+    .application-text {
+        padding-top: 20%;
+    }
+    .footer-nav a{
+        padding: 0 15px;
+    }
+    .product-item{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .filter-option select{
+        margin-bottom: 10px;
+    }
+    .owl-thumb-item {
+        height: 50px;
+    }
+    .abs {
+        position: relative;
+        text-align: center;
+        margin-top: 10px;
+        display: inline-block;
+        margin-right: 20px;
+    }
+    .abs2 {
+        left: 0;
+    }
+    .item-action a{
+        padding: 10px;
+    }
+    .news-item{
+        width: 100%;
+
+    }
+    .newsItem-image{
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+    }
+    .service-item{
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}

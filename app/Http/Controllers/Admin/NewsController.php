@@ -90,12 +90,13 @@ class NewsController extends Controller
         $news->mota = $request->txtDesc;
         $news->photo = $img_name;
         $news->background = $img_name2;
-
+        $news->noibat = $request->hotnews;
         $news->title = $request->txtTitle;
         $news->content = $request->txtContent;
         $news->keyword = $request->txtKeyword;
         $news->description = $request->txtDescription;
         $news->com = $com;
+        
         $news->stt = intval($request->stt);
         if($request->status=='on'){
             $news->status = 1;
@@ -224,7 +225,9 @@ class NewsController extends Controller
             }else{
                 $news->alias = changeTitle($request->txtName);
             }
-            
+            $news->noibat = $request->hotnews;
+
+
             $news->mota = $request->txtDesc;
             $news->title = $request->txtTitle;
             $news->content = $request->txtContent;

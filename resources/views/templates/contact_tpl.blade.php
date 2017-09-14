@@ -8,6 +8,17 @@
 <section class="contact">
     <div class="container">
         <h2 class="title-tt">Liên hệ</h2>
+        <div class="mess col-sm-12 col-md-12">
+            @if(session('mess'))
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="alert alert-success">
+                        <h5>{{session('mess')}}</h5>
+                    </div>
+                </div>
+                
+            @endif
+        </div>
         <div class="row">
             <div class="col-xs-12 col-md-6 col-left">
                 <h4>Liên hệ với chúng tôi</h4>
@@ -31,13 +42,7 @@
                         <button class="cf-sub" type="submit">Gửi</button>
                     </form>
                 </div>
-               <!--  <div class="mess">
-                    @if(session('mess'))
-                        <div class="alert alert-success">
-                            {{session('mess')}}
-                        </div>
-                    @endif
-                </div> -->
+                
             </div>
         </div>
     </div>

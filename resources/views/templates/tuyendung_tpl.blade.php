@@ -67,7 +67,7 @@
 
                 </div>
 
-                <div class="col-sm-12 text-right">
+                <div class="col-sm-12">
                     <button class="cf-sub cf-sb" type="submit">Gửi</button>
                 </div>
 

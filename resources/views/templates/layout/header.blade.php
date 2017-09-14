@@ -21,12 +21,12 @@
                                     <a href="{{asset('tin-tuc')}}" title="">Tin tức</a>
                                 </li>
                                 <li class="logo">
-                                    <a href="" title=""><img alt="" src="{!! asset('upload/hinhanh/'.$setting->photo) !!}" title=""> </a>
+                                    <a href="{{url('')}}" title=""><img alt="" src="{!! asset('upload/hinhanh/'.$setting->photo) !!}" title=""> </a>
                                 </li>
                                 <li>
                                     <a href="{{asset('dich-vu')}}" title="">Dịch vụ</a>
                                 </li>
-                                <li class="<?php if(@$com == 'lien-he') echo 'active' ?>">
+                                <li class="">
                                     <a href="{{asset('tuyen-dung')}}" title="">Tuyển dụng</a>
                                 </li>
                                 <li>

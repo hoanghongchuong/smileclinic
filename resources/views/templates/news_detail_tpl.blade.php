@@ -1,58 +1,116 @@
 @extends('index')
 @section('content')
-@include('templates.layout.slider')
-<section class="content">
-    <section class="bread">
-        <div class="container">
-            <h2 class="title">
-                Tin tức
-                <span><i class="fa fa-clock-o"></i> <?=date('d/m/Y',strtotime($news_detail->created_at))?></span>
-            </h2>
-        </div>
-    </section>
-    <section class="service-detail">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-9">
-                    <div class="service-left">
-                        <h1>{{ $news_detail->name }}</h1>
+ <main class="main-section">
+        <div class="clearfix"></div>
+        <section class="news-detail">
+            <div class="container">
+                <h2 class="title-index title-small"><span>Tin tức</span></h2>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8 col-left">
+                        <h2>{{$news_detail->name}}</h2>
                         <ul>
-                            @foreach($baiviet_khac as $item)
+                             @foreach($baiviet_khac as $item)
                             <li><a href="{!! asset('tin-tuc/'.$news_detail->alias.'.html') !!}" title="{{ $item->name }}">{{ $item->name }}</a> </li>
                             @endforeach
                         </ul>
+
                         {!! $news_detail->content !!}
-                        <!-- AddThis Button BEGIN -->
-                        <div class="addthis_toolbox addthis_default_style" style="margin-top:10px;">
-                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                        <a class="addthis_button_tweet"></a>
-                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                        <a class="addthis_counter addthis_pill_style"></a>
-                        </div>
-                        <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52843d4e1ff0313a"></script>
+
                     </div>
-                </div>
-                <div class="col-xs-12 col-md-3">
-                    <div class="service-right">
-                        <div class="views">
-                            <p>Tin tức mới nhất</p>
+
+                    <div class="col-xs-12 col-md-4 right-left">
+
+                        <section class="news-plus">
+
+                            <h4 class="title-plus">Tin mới cập nhật</h4>
+                          
                             <ul>
-                                @foreach($tintuc_moinhat_detail as $item)
-                                <li>
-                                    <a href="{!! asset('tin-tuc/'.$item->alias.'.html') !!}" title="{!! $item->name !!}"><img src="{!! asset('upload/news/'.$item->photo) !!}" alt="{!! $item->name !!}" ></a>
-                                    <a href="{!! asset('tin-tuc/'.$item->alias.'.html') !!}" title="{!! $item->name !!}">{!! $item->name !!}</a>
+
+                                <li class="li-main">
+
+                                    <div class="cover"><img src="{{asset('public/images/kim.jpg')}}" alt="" title=""> </div>
+
+                                    <p class="title-cover"><a href="chitiet-tintuc.html" title="">{{$tintuc_moinhat_detail[0]->name}}</a> </p>
+
+                                    <p>{{$tintuc_moinhat_detail[0]->mota}}</p>
+
+                                </li>
+                                @foreach($tintuc_moinhat_detail as $key=>$val)
+                                <li><a href="chitiet-tintuc.html" title="">
+                                    {{ $val->name }}</a> 
                                 </li>
                                 @endforeach
                             </ul>
-                        </div>
-                        @foreach($quangcao_tintuc as $item)
-                        <img src="{!! asset('upload/hinhanh/'.$item->photo) !!}" alt="">
-                        @endforeach
+
+                        </section>
+
+                        <section class="news-plus">
+
+                            <h4 class="title-plus">Tin nhanh</h4>
+
+                            <ul>
+
+                                <li class="li-main">
+
+                                    <div class="cover"><img src="{{asset('public/images/kim.jpg')}}" alt="" title=""> </div>
+
+                                    <p class="title-cover"><a href="chitiet-tintuc.html" title="">
+
+                                        Ngoại trưởng Mỹ: Không kích Syria là lời cảnh báo Triều Tiên</a> </p>
+
+                                    <p>Một nữ MC người Ấn Độ trải qua khoảnh khắc đau đớn</p>
+
+                                </li>
+
+                                <li><a href="chitiet-tintuc.html" title="">
+
+                                    Đưa tin về tai nạn ôtô, nữ MC phát hiện chồng thiệt mạng</a> </li>
+
+                                <li><a href="chitiet-tintuc.html" title="">
+
+                                    Cá mập trắng mắc cạn gây náo loạn bờ biển Mỹ</a> </li>
+
+                                <li><a href="chitiet-tintuc.html" title="">
+
+                                    Một năm của 'Chính phủ kiến tạo, hành động'</a> </li>
+
+                                <li><a href="chitiet-tintuc.html" title="">
+
+                                    Cá mập trắng mắc cạn gây náo loạn bờ biển Mỹ</a> </li>
+
+                                <li><a href="chitiet-tintuc.html" title="">
+
+                                    Chiến tranh trong bút pháp mới mẻ của Jean Rouaud</a> </li>
+
+                                <li><a href="chitiet-tintuc.html" title="">
+
+                                    Cá mập trắng mắc cạn gây náo loạn bờ biển Mỹ</a> </li>
+
+                            </ul>
+
+                        </section>
+
+                        <p><img src="images/qc.png" title="" alt="" class="img-fluid"> </p>
+
                     </div>
+
                 </div>
+
             </div>
-        </div>
-    </section>
-</section>
+
+        </section>
+
+        <section class="banner-ads">
+
+            <a href="" title="">
+
+                <img src="images/thumb.png" title="" alt="">
+
+            </a>
+
+        </section>
+
+    </main>
+
+    <div class="clearfix"></div>
 @endsection

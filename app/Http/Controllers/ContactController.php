@@ -1,8 +1,8 @@
 <?php 
 namespace App\Http\Controllers;
-
-use DB,Cache,Mail, Request;
-
+use App\Contact;
+use Illuminate\Http\Request;
+use DB,Cache,Mail;
 class ContactController extends Controller {
 	protected $setting = NULL;
 
@@ -30,23 +30,32 @@ class ContactController extends Controller {
     public function postContact(Request $request)
 	{
 
-		$setting = Cache::get('setting');
-		$data = [
-			'hoten' 	=> Request::input('hoten_contact'),   
-			'email' 	=> Request::input('email_contact'),
-			'dienthoai' 	=> Request::input('dienthoai_contact'),
-			'diachi' 	=> Request::input('diachi_contact'),
-			'noidung' 	=> Request::input('noidung_contact')
-		];
+		$data = new Contact;
+		$data->name = $request->txtName;
+		$data->phone = $request->txtPhone;
+		$data->email = $request->txtEmail;
+		$data->content = $request->txtContent;
+		$data->save();
+		return redirect()->back()->with('mess','Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
 
-		Mail::send('templates.layout.blanks', $data, function($msg){
-			$setting = Cache::get('setting');
-			$msg->from(Request::input('email_contact'), Request::input('hoten_contact'));
-			$msg->to($setting->email, 'Author sendmail')->subject('Liên hệ từ website');
-		});
-		echo "<script type='text/javascript'>
-			alert('Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
-			window.location = '".url('/')."' </script>";
+
+		// $setting = Cache::get('setting');
+		// $data = [
+		// 	'hoten' 	=> Request::input('hoten_contact'),   
+		// 	'email' 	=> Request::input('email_contact'),
+		// 	'dienthoai' 	=> Request::input('dienthoai_contact'),
+		// 	'diachi' 	=> Request::input('diachi_contact'),
+		// 	'noidung' 	=> Request::input('noidung_contact')
+		// ];
+
+		// Mail::send('templates.layout.blanks', $data, function($msg){
+		// 	$setting = Cache::get('setting');
+		// 	$msg->from(Request::input('email_contact'), Request::input('hoten_contact'));
+		// 	$msg->to($setting->email, 'Author sendmail')->subject('Liên hệ từ website');
+		// });
+		// echo "<script type='text/javascript'>
+		// 	alert('Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
+		// 	window.location = '".url('/')."' </script>";
 	}
 
 }

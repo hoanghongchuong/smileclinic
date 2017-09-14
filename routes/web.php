@@ -152,8 +152,9 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 		
 	// 	Route::get('{id}/deleteList',['as'=>'admin.lienket.getDeleteList','uses'=>'Admin\LienKetController@getDeleteList']);
 	// });
-	Route::group(['prefix' => 'recruitment'], function(){
-		Route::get('/','Admin\RecruitmentController@getRecruitment');
+	Route::group(['prefix' => 'contact'], function(){
+		Route::get('/','Admin\ContactController@getContact')->name('admin.contact.index');
+		Route::get('delete/{id}','Admin\ContactController@deleteContact')->name('delete.contact');
 	});
 	Route::group(['prefix' => 'newsletter'], function(){
 		Route::get('/',['as'=>'admin.newsletter.index','uses'=>'Admin\NewsLetterController@getList']);

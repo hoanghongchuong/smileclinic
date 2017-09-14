@@ -22,14 +22,22 @@
             <div class="col-xs-12 col-md-6 right-left">
                 <h4>Gửi phản hồi cho chúng tôi</h4>
                 <div class="form-contact">
-                    <form>
-                        <input type="text" class="cf-input" placeholder="Họ tên" required="">
-                        <input type="text" class="cf-input" placeholder="Email" required="">
-                        <input type="text" class="cf-input" placeholder="Số điện thoại" required="">
-                        <textarea name="" id="" cols="30" rows="7" class="cf-input" placeholder="Nội dung" required=""></textarea>
+                    <form method="post" action="{{route('postContact')}}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="text" class="cf-input" name="txtName" placeholder="Họ tên" required="">
+                        <input type="email" class="cf-input" name="txtEmail" placeholder="Email" required="">
+                        <input type="text" class="cf-input" name="txtPhone" placeholder="Số điện thoại" required="">
+                        <textarea name="txtContent" id="" cols="30" rows="7" class="cf-input" placeholder="Nội dung" required=""></textarea>
                         <button class="cf-sub" type="submit">Gửi</button>
                     </form>
                 </div>
+               <!--  <div class="mess">
+                    @if(session('mess'))
+                        <div class="alert alert-success">
+                            {{session('mess')}}
+                        </div>
+                    @endif
+                </div> -->
             </div>
         </div>
     </div>

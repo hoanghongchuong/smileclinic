@@ -313,7 +313,7 @@ class IndexController extends Controller {
 			$camnhan_khachhang = DB::table('lienket')->select()->where('status',1)->where('com','cam-nhan')->get();
 			$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','bai-viet')->get()->first();
 			$quangcao_tintuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','quang-cao')->get();
-			$tintuc_moinhat_detail = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('created_at','desc')->take(3)->get();
+			$tintuc_moinhat_detail = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('created_at','desc')->take(6)->get();
 			$baiviet_khac = DB::table('news')->select()->where('status',1)->where('alias','<>',$id)->where('com','tin-tuc')->orderby('created_at','desc')->take(2)->get();
 			$com='tin-tuc';
 			$setting = Cache::get('setting');

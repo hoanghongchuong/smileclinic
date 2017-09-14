@@ -27,15 +27,28 @@ class ContactController extends Controller {
 		// End cấu hình SEO
         return view('templates.contact_tpl', compact('banner_danhmuc','lien-he','chinhanh','about_lienhe','keyword','description','title','img_share'));
     }
+
+    /**
+     * post contact action
+     * @param  Request $request
+     * @return redirect
+     */
     public function postContact(Request $request)
 	{
-
-		$data = new Contact;
-		$data->name = $request->txtName;
-		$data->phone = $request->txtPhone;
-		$data->email = $request->txtEmail;
-		$data->content = $request->txtContent;
-		$data->save();
+		// $data = new Contact();
+		// $data->name = $request->txtName;
+		// $data->phone = $request->txtPhone;
+		// $data->email = $request->txtEmail;
+		// $data->content = $request->txtContent;
+		// $data->save();
+		Contact::insert([
+			'name' => $request->txtName,
+			'phone' => $request->txtPhone,
+			'email' => $request->txtEmail,
+			'content' => $request->txtContent,
+			'created_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		]);
 		return redirect()->back()->with('mess','Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
 
 

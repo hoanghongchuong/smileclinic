@@ -57,6 +57,8 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 	Route::get('setting',['as'=>'admin.setting.index','uses'=>'Admin\SettingController@index']);
 	Route::post('setting/update',['as'=>'admin.setting.update','uses'=>'Admin\SettingController@update']);
 	
+	Route::post('contact/access',['as'=>'admin.contact.access','uses'=>'Admin\ContactController@xuly']);
+
 	Route::group(['prefix' => 'users'], function(){
 		Route::get('info',['as'=>'admin.users.getAdmin','uses'=>'Admin\UsersController@getAdmin']);
 		Route::post('updateinfo',['as'=>'admin.users.updateinfo','uses'=>'Admin\UsersController@updateinfo']);
@@ -131,6 +133,7 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 	Route::group(['prefix' => 'about'], function(){
 		Route::get('/','Admin\AboutController@getList')->name('admin.about.getList');
 		Route::get('add','Admin\AboutController@getAdd')->name('admin.about.getAdd');
+
 		// Route::get('postAdd','Admin\AboutController@postAdd')->name('admin.about.postAdd');
 		Route::post('postAdd',['as'=>'admin.about.postAdd','uses'=>'Admin\AboutController@postAdd']);
 

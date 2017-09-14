@@ -35,11 +35,11 @@
                                     <p>{{$tintuc_moinhat_detail[0]->mota}}</p>
 
                                 </li>
-                                @foreach($tintuc_moinhat_detail as $key=>$val)
+                                @for($i=1; $i< count($tintuc_moinhat_detail); $i++)
                                 <li><a href="chitiet-tintuc.html" title="">
-                                    {{ $val->name }}</a> 
+                                    {{ $tintuc_moinhat_detail[$i]->name }}</a> 
                                 </li>
-                                @endforeach
+                                @endfor
                             </ul>
 
                         </section>
@@ -90,7 +90,7 @@
 
                         </section>
 
-                        <p><img src="images/qc.png" title="" alt="" class="img-fluid"> </p>
+                        <p><img src="{{asset('public/images/qc.png')}}" title="" alt="" class="img-fluid"> </p>
 
                     </div>
 
@@ -104,7 +104,7 @@
 
             <a href="" title="">
 
-                <img src="images/thumb.png" title="" alt="">
+                <img src="{{asset('public/images/thumb.png')}}" title="" alt="">
 
             </a>
 

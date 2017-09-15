@@ -26,13 +26,15 @@ Route::get('san-pham',['as'=>'getProduct', 'uses'=>'IndexController@getProduct']
 Route::get('san-pham/{id}',['as'=>'getProductList', 'uses'=>'IndexController@getProductList']);
 
 
-Route::get('dich-vu',['as'=>'getDichvu', 'uses'=>'IndexController@getDichvu']);
+// Route::get('dich-vu',['as'=>'getDichvu', 'uses'=>'IndexController@getDichvu']);
+Route::get('dich-vu',['as'=>'getCateDichvu', 'uses'=>'IndexController@getCateService']);
+
 Route::get('dich-vu/{id}',['as'=>'getDichVuList', 'uses'=>'IndexController@getDichVuList']);
 Route::get('chi-tiet-dich-vu/{id}.html',['as'=>'getDichVuDetail', 'uses'=>'IndexController@getDichVuDetail']);
 
 Route::get('tuyen-dung','IndexController@getTuyenDung')->name('getTuyenDung');
-Route::post('tuyen-dung',['as'=>'postTuyenDung', 'uses'=>'IndexController@postTuyenDung']);
-Route::get('thu-vien-anh',['as'=>'getThuvienanh', 'uses'=>'IndexController@getThuvienanh']);
+// Route::post('tuyen-dung',['as'=>'postTuyenDung', 'uses'=>'IndexController@postTuyenDung']);
+// Route::get('thu-vien-anh',['as'=>'getThuvienanh', 'uses'=>'IndexController@getThuvienanh']);
 
 Route::get('hoi-vien',['as'=>'getHoivien', 'uses'=>'IndexController@getHoivien']);
 
@@ -134,8 +136,6 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 	Route::group(['prefix' => 'about'], function(){
 		Route::get('/','Admin\AboutController@getList')->name('admin.about.getList');
 		Route::get('add','Admin\AboutController@getAdd')->name('admin.about.getAdd');
-
-		// Route::get('postAdd','Admin\AboutController@postAdd')->name('admin.about.postAdd');
 		Route::post('postAdd',['as'=>'admin.about.postAdd','uses'=>'Admin\AboutController@postAdd']);
 
 		Route::get('edit',['as'=>'admin.about.getEdit','uses'=>'Admin\AboutController@getEdit']);
@@ -143,19 +143,19 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 
 		Route::get('{id}/delete',['as'=>'admin.about.getDelete','uses'=>'Admin\AboutController@getDelete']);
 	});
-	// Route::group(['prefix' => 'lienket'], function(){
-	// 	Route::get('/',['as'=>'admin.lienket.index','uses'=>'Admin\LienKetController@getList']);
-	// 	Route::get('add',['as'=>'admin.lienket.getAdd','uses'=>'Admin\LienKetController@getAdd']);
-	// 	Route::post('postAdd',['as'=>'admin.lienket.postAdd','uses'=>'Admin\LienKetController@postAdd']);
+	Route::group(['prefix' => 'lienket'], function(){
+		Route::get('/',['as'=>'admin.lienket.index','uses'=>'Admin\LienKetController@getList']);
+		Route::get('add',['as'=>'admin.lienket.getAdd','uses'=>'Admin\LienKetController@getAdd']);
+		Route::post('postAdd',['as'=>'admin.lienket.postAdd','uses'=>'Admin\LienKetController@postAdd']);
 
 
-	// 	Route::get('edit',['as'=>'admin.lienket.getEdit','uses'=>'Admin\LienKetController@getEdit']);
-	// 	Route::post('edit',['as'=>'admin.lienket.update','uses'=>'Admin\LienKetController@update']);
+		Route::get('edit',['as'=>'admin.lienket.getEdit','uses'=>'Admin\LienKetController@getEdit']);
+		Route::post('edit',['as'=>'admin.lienket.update','uses'=>'Admin\LienKetController@update']);
 
-	// 	Route::get('{id}/delete',['as'=>'admin.lienket.getDelete','uses'=>'Admin\LienKetController@getDelete']);
+		Route::get('{id}/delete',['as'=>'admin.lienket.getDelete','uses'=>'Admin\LienKetController@getDelete']);
 		
-	// 	Route::get('{id}/deleteList',['as'=>'admin.lienket.getDeleteList','uses'=>'Admin\LienKetController@getDeleteList']);
-	// });
+		Route::get('{id}/deleteList',['as'=>'admin.lienket.getDeleteList','uses'=>'Admin\LienKetController@getDeleteList']);
+	});
 	Route::group(['prefix' => 'contact'], function(){
 		Route::get('/','Admin\ContactController@getContact')->name('admin.contact.index');
 		Route::get('delete/{id}','Admin\ContactController@deleteContact')->name('delete.contact');

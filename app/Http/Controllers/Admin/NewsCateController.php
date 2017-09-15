@@ -56,7 +56,17 @@ class NewsCateController extends Controller {
             $img_name=time().'_'.$img->getClientOriginalName();
             $img->move($path_img,$img_name);
         }
+
+        $img2 = $request->file('fImagesBg');
+        $path_img2='upload/news';
+        $img_name2='';
+        if(!empty($img2)){
+            $img_name2=$img2->getClientOriginalName();
+            $img2->move($path_img2,$img_name2);
+        }
+
         $cate->photo = $img_name;
+        $cate->background = $img_name2;
         $cate->parent_id = $request->txtNewsCate;
         $cate->name = $request->txtName;
         $cate->alias = changeTitle($request->txtName);
@@ -99,7 +109,13 @@ class NewsCateController extends Controller {
                 $data->update();
                 return redirect('admin/newscate?type='.$com)->with('status','Cập nhật thành công !');
             }
-            
+            if($request->get('delete_bg')>0){
+                $background='upload/news/'.$request->get('delete_bg');
+                File::delete($background);
+                $data->background='';
+                $data->update();
+                return redirect('admin/news?edit&id='.$id.'&type='.$com)->with('status','Xóa backgound thành công !');
+            }
             $parent = NewsCate::orderBy('stt', 'asc')->where('com' , $com)->get()->toArray();
            // Gọi view edit.blade.php hiển thị bải viết
             return view('admin.newscate.edit',compact('data','parent','id','trang'));
@@ -133,6 +149,18 @@ class NewsCateController extends Controller {
                 $news_cate->photo = $img_name;
                 if (File::exists($img_current)) {
                     File::delete($img_current);
+                }
+            }
+
+            $img2 = $request->file('fImagesBg');
+            $img_current2 = 'upload/news/'.$request->img_current2;
+            if(!empty($img2)){
+                $path_img2='upload/news';
+                $img_name2=time().'_'.$img2->getClientOriginalName();
+                $img2->move($path_img2,$img_name2);
+                $news_cate->background = $img_name2;
+                if (File::exists($img_current2)) {
+                    File::delete($img_current2);
                 }
             }
 

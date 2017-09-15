@@ -48,7 +48,7 @@
               <tr>
                 <th style="width: 20px;"><input type="checkbox" name="chonhet" class="minimal" id="chonhet" /></th>
                 <th class="text-center with_dieuhuong">Stt</th>
-                @if($_GET['type']=='khong-gian' || $_GET['type']=='dich-vu')
+                @if($_GET['type']=='dich-vu')
                 <th>Danh mục cha</th>
                 @endif
                 <th>Tên bài viết</th>

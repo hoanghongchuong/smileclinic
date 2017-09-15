@@ -47,7 +47,7 @@
 									</div>
 									
 									<div class="clearfix"></div>
-									@if($_GET['type']=='bai-viet' || $_GET['type']=='khong-gian')
+									@if($_GET['type']=='dich-vu')
 									<div class="form-group">
 								      	<label for="ten">Danh mục bài viết</label>
 								      	<select name="txtNewsCate" class="form-control">
@@ -77,7 +77,7 @@
 									</div>
 								</div>
 								<div class="col-md-6 col-xs-12">
-									@if($_GET['type']=='dich-vu')
+									<!-- @if($_GET['type']=='dich-vu')
 									<div class="form-group @if ($errors->first('fImagesBg')!='') has-error @endif">
 										<div class="form-group">
 											<div class="img_backgound">
@@ -95,7 +95,7 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImagesBg'); !!}</label>
 								      	@endif
 									</div>
-									@endif
+									@endif -->
 
 									
 								</div>
@@ -142,7 +142,7 @@
 	            <div class="clearfix"></div>
 	            <div class="form-group">
 				    <label>
-			        	<input type="checkbox" name="hotnews" 
+			        	<input type="checkbox" name="noibat" 
 			        	{{ ($data->noibat==1)?'checked="checked"':'' }}> 
 			        	Tin hot
 			    	</label>

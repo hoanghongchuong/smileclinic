@@ -73,7 +73,7 @@
           </a>
           <ul class="treeview-menu">
             
-            <!-- <li><a href="admin/newscate?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li> -->
+            <li><a href="admin/newscate?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
             <li><a href="admin/news?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Dịch vụ</span></a></li>
             <li><a href="admin/about/edit?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Giới thiệu dịch vụ</span></a></li>
           </ul>

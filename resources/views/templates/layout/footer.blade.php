@@ -65,19 +65,18 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-8">
                     <div class="info">
-                        <h1>Cty CP Công Nghệ và Truyền Thông GCO</h1>
+                        <h1>{{$setting->company}}</h1>
                         <div class="row">
                             <div class="col-md-6">
-                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> Tầng 8, TOYOTA Thanh Xuân</p>
-                                <p>315 Trường Chinh, Thanh Xuân, Hà Nội</p>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{$setting->address}}
                             </div>
                             <div class="col-md-3">
-                                <p><i class="fa fa-phone" aria-hidden="true"></i> (04)6 290 8885</p>
-                                <p><i class="fa fa-envelope" aria-hidden="true"></i> support@gco.vn</p>
+                                <p><i class="fa fa-phone" aria-hidden="true"></i> {{$setting->phone}}</p>
+                                <p><i class="fa fa-envelope" aria-hidden="true"></i> {{$setting->email}}</p>
                             </div>
                             <div class="col-md-3">
-                                <p><i class="fa fa-print" aria-hidden="true"></i> (04)3 550 1492</p>
-                                <p><i class="fa fa-globe" aria-hidden="true"></i> www.gco.vn</p>
+                                <p><i class="fa fa-print" aria-hidden="true"></i> {{$setting->fax}}</p>
+                                <p><i class="fa fa-globe" aria-hidden="true"></i> {{$setting->website}}</p>
                             </div>
                         </div>
                     </div>

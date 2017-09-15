@@ -28,15 +28,15 @@
 
                                 <li class="li-main">
 
-                                    <div class="cover"><img src="{{asset('public/images/kim.jpg')}}" alt="" title=""> </div>
+                                    <div class="cover"><img src="{{ asset('upload/news/'.$tintuc_moinhat_detail[0]->photo)}}" alt="" title=""> </div>
 
-                                    <p class="title-cover"><a href="chitiet-tintuc.html" title="">{{$tintuc_moinhat_detail[0]->name}}</a> </p>
+                                    <p class="title-cover"><a href="{!! asset('tin-tuc/'.$tintuc_moinhat_detail[0]->alias.'.html') !!}" title="">{{$tintuc_moinhat_detail[0]->name}}</a> </p>
 
                                     <p>{{$tintuc_moinhat_detail[0]->mota}}</p>
 
                                 </li>
                                 @for($i=1; $i< count($tintuc_moinhat_detail); $i++)
-                                <li><a href="chitiet-tintuc.html" title="">
+                                <li><a href="{!! asset('tin-tuc/'.$tintuc_moinhat_detail[$i]->alias.'.html') !!}" title="">
                                     {{ $tintuc_moinhat_detail[$i]->name }}</a> 
                                 </li>
                                 @endfor
@@ -52,40 +52,21 @@
 
                                 <li class="li-main">
 
-                                    <div class="cover"><img src="{{asset('public/images/kim.jpg')}}" alt="" title=""> </div>
+                                    <div class="cover"><img src="{{ asset('upload/news/'.$hot_news[0]->photo)}}" alt="" title=""> </div>
 
-                                    <p class="title-cover"><a href="chitiet-tintuc.html" title="">
+                                    <p class="title-cover"><a href="" title=""> {{ $hot_news[0]->name}}</a> 
+                                    </p>
 
-                                        Ngoại trưởng Mỹ: Không kích Syria là lời cảnh báo Triều Tiên</a> </p>
-
-                                    <p>Một nữ MC người Ấn Độ trải qua khoảnh khắc đau đớn</p>
+                                    <p>{{ $hot_news[0]->mota }}</p>
 
                                 </li>
 
-                                <li><a href="chitiet-tintuc.html" title="">
-
-                                    Đưa tin về tai nạn ôtô, nữ MC phát hiện chồng thiệt mạng</a> </li>
-
-                                <li><a href="chitiet-tintuc.html" title="">
-
-                                    Cá mập trắng mắc cạn gây náo loạn bờ biển Mỹ</a> </li>
-
-                                <li><a href="chitiet-tintuc.html" title="">
-
-                                    Một năm của 'Chính phủ kiến tạo, hành động'</a> </li>
-
-                                <li><a href="chitiet-tintuc.html" title="">
-
-                                    Cá mập trắng mắc cạn gây náo loạn bờ biển Mỹ</a> </li>
-
-                                <li><a href="chitiet-tintuc.html" title="">
-
-                                    Chiến tranh trong bút pháp mới mẻ của Jean Rouaud</a> </li>
-
-                                <li><a href="chitiet-tintuc.html" title="">
-
-                                    Cá mập trắng mắc cạn gây náo loạn bờ biển Mỹ</a> </li>
-
+                                @for($i=1; $i< count($hot_news); $i++)
+                                <li><a href="{!! asset('tin-tuc/'.$hot_news[$i]->alias.'.html') !!}" title="">
+                                    {{ $hot_news[$i]->name }}</a> 
+                                </li>
+                                @endfor
+                                
                             </ul>
 
                         </section>

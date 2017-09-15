@@ -10,40 +10,19 @@
         <div class="container">
             <p class="title-index text-center"><span>Dịch vụ của chúng tôi</span></p>
             <div class="row">
+                @foreach($cate_dichvu as $dv)
                 <div class="col-xs-12 col-md-4">
                     <div class="myService-item">
                         <p class="myService-image">
-                            <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('public/images/dv2.png')}}" title=""> </a>
+                            <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('upload/news/'.$dv->background)}}" title=""> </a>
                         </p>
                         <p class="myService-text">
-                            <a href="chitiet-tintuc.html" title="">Sản phẩm bảo vệ sức khỏe</a>
+                            <a href="chitiet-tintuc.html" title="">{{$dv->name}}</a>
                         </p>
-                        <p class="myService-desc">Every man sooner or later, confronts with the problem of damage of teeth and dentition.</p>
+                        <p class="myService-desc">{{$dv->mota}}</p>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md-4">
-                    <div class="myService-item">
-                        <p class="myService-image">
-                            <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('public/images/dv3.png')}}" title=""> </a>
-                        </p>
-                        <p class="myService-text">
-                            <a href="chitiet-tintuc.html" title="">Canxi nano</a>
-                        </p>
-                        <p class="myService-desc">Every man sooner or later, confronts with the problem of damage of teeth and dentition.</p>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <div class="myService-item">
-                        <p class="myService-image">
-                            <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('public/images/dv4.png')}}" title=""> </a>
-                        </p>
-                        <p class="myService-text">
-                            <a href="chitiet-tintuc.html" title="">Sản phẩm khác</a>
-                        </p>
-                        <p class="myService-desc">Every man sooner or later, confronts with the problem of damage of teeth and dentition.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -92,17 +71,19 @@
     <section class="register">
         <div class="container">
             <p class="title-index register-pdl"><span>Đăng ký nhận khuyến mại</span></p>
-            <form class="form-register">
+            <form class="form-register" method="post" action="{{ route('postNewsletter') }}">
+             
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6 register-pdl">
-                            <input type="text" class="cf-input" placeholder="Họ tên" required="">
+                            <input type="text" class="cf-input" name="txtName" placeholder="Họ tên" required="">
 
-                            <input type="text" class="cf-input" placeholder="Email" required="">
+                            <input type="email" class="cf-input" name="txtEmail" placeholder="Email" required="required">
 
-                            <input type="text" class="cf-input" placeholder="Số điện thoại" required="">
+                            <input type="text" class="cf-input" name="txtPhone" placeholder="Số điện thoại" required="required">
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 register-pdr">
-                        <textarea name="" id="" cols="30" rows="7" class="cf-input" placeholder="Nội dung" required=""></textarea>
+                        <textarea name="txtContent" id="" cols="30" rows="7" class="cf-input" placeholder="Nội dung" required=""></textarea>
                     </div>
                     <div class="col-xs-12 col-md-12 text-right">
                         <button class="cf-sub" type="submit">Đăng ký</button>

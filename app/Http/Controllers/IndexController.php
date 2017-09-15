@@ -31,6 +31,7 @@ class IndexController extends Controller {
     	$setting = DB::table('setting')->select()->where('id',1)->get()->first();
     	$menu_top = DB::table('menu')->select()->where('com','menu-top')->where('status',1)->orderBy('stt','asc')->get();
     	$dichvu = DB::table('news')->select()->where('status',1)->where('com','dich-vu')->orderBy('stt','asc')->get();
+    	
     	$chinhanh = DB::table('lienket')->select()->where('status',1)->where('com','chi-nhanh')->orderby('stt','asc')->get();
         Cache::forever('setting', $setting);
         Cache::forever('menu_top', $menu_top);
@@ -50,6 +51,7 @@ class IndexController extends Controller {
 		$tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(12)->get();
 		$com='index';
 		$hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->take(5)->get();
+		$cate_dichvu = DB::table('news_categories')->select()->where('status',1)->where('com','dich-vu')->orderBy('stt','asc')->get();
 		$about_dichvu = DB::table('about')->select()->where('com','dich-vu')->get()->first();
 		// Cấu hình SEO
 		$setting = Cache::get('setting');
@@ -60,7 +62,7 @@ class IndexController extends Controller {
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
 
-		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about_dichvu','tintuc_moinhat','keyword','description','title','img_share','hot_news'));
+		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about_dichvu','tintuc_moinhat','keyword','description','title','img_share','hot_news','cate_dichvu'));
 	}
 	public function getProduct()
 	{
@@ -198,6 +200,12 @@ class IndexController extends Controller {
 		// End cấu hình SEO
 		return view('templates.dichvu_tpl', compact('tintuc','com','banner_danhmuc','tintuc_noibat','camnhan_khachhang','keyword','description','title','img_share'));
 	}
+
+	public function getCateService(){
+		$cate_service = DB::table('news_categories')->where('status',1)->where('com','dich-vu')->orderBy('id','asc')->get();
+		return view('templates.cateservice_tpl', compact('cate_service'));
+	}
+
 	public function getHoivien()
 	{
 		$about_hoivien = DB::table('about')->select()->where('com','hoi-vien')->get()->first();
@@ -317,6 +325,8 @@ class IndexController extends Controller {
 			$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','bai-viet')->get()->first();
 			$quangcao_tintuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','quang-cao')->get();
 			$tintuc_moinhat_detail = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('created_at','desc')->take(6)->get();
+			$hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->take(5)->get();
+
 			$baiviet_khac = DB::table('news')->select()->where('status',1)->where('alias','<>',$id)->where('com','tin-tuc')->orderby('created_at','desc')->take(2)->get();
 			$com='tin-tuc';
 			$setting = Cache::get('setting');
@@ -330,7 +340,7 @@ class IndexController extends Controller {
 			$description = $news_detail->description;
 			$img_share = asset('upload/news/'.$news_detail->photo);
 
-			return view('templates.news_detail_tpl', compact('news_detail','com','tintuc_moinhat_detail','camnhan_khachhang','banner_danhmuc','baiviet_khac','quangcao_tintuc','keyword','description','title','img_share'));
+			return view('templates.news_detail_tpl', compact('news_detail','com','tintuc_moinhat_detail','camnhan_khachhang','banner_danhmuc','baiviet_khac','quangcao_tintuc','keyword','description','title','img_share','hot_news'));
 		}else{
 			return redirect()->route('getErrorNotFount');
 		}
@@ -387,10 +397,13 @@ class IndexController extends Controller {
         );
         $kiemtra_mail = DB::table('newsletter')->select()->where('status',1)->where('com','newsletter')->where('email',$request->txtEmail)->get()->first();
         if(empty($kiemtra_mail)){
-			$data 				= new NewsLetter();
-			$data->email    	= $request->txtEmail;
-			$data->status    	= 1;
-			$data->com    	= 'newsletter';
+			$data = new NewsLetter();
+			$data->name = $request->txtName;
+			$data->email = $request->txtEmail;
+			$data->phone = $request->txtPhone;
+			$data->content = $request->txtContent;
+			$data->status = 1;
+			$data->com = 'newsletter';
 			$data->save();
 
 			echo "<script type='text/javascript'>

@@ -66,13 +66,34 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									@if($_GET['type']=='khong-gian')
+									@if($_GET['type']=='dich-vu')
 									<div class="form-group">
 								      	<label for="mota">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" class="form-control">{!! old('txtDesc', isset($data) ? $data->mota : null) !!}</textarea>
 									</div>
 									@endif
 									<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
+								</div>
+								<div class="col-md-6 col-xs-12">
+									@if($_GET['type']=='dich-vu')
+									<div class="form-group @if ($errors->first('fImagesBg')!='') has-error @endif">
+										<div class="form-group">
+											<div class="img_backgound">
+												<img src="{{ asset('upload/news/'.$data->background) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
+												<input type="hidden" name="img_current2" value="{!! @$data->background !!}">
+												@if(!empty($data->background))
+												<a href="{!! asset('admin/newscate/edit?id='.$id.'&type='.@$_GET['type'].'&delete_bg='.@$data->background) !!}" class="img_bg"><img src="{!! asset('public/admin_assets/images/del.png') !!}" alt="Xóa hình"></a>
+												@endif
+											</div>
+										</div>
+										<label for="file">Chọn background</label>
+								     	<input type="file" id="file" name="fImagesBg" >
+								    	<p class="help-block">Width:225px - Height: 162px</p>
+								    	@if ($errors->first('fImagesBg')!='')
+								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImagesBg'); !!}</label>
+								      	@endif
+									</div>
+									@endif
 								</div>
 							</div>
 							<div class="clearfix"></div>

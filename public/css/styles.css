@@ -1090,20 +1090,18 @@ footer {
 
 .recruitment form{
 
-    padding: 15px;
-
-    background: #f78239;
 
     color: #fff;
 
 }
+.recruitment .bg-y{
+    background: #f78239;
+    padding:15px;
+}
 
 .recruitment label{
-
     font-size: 14px;
-
     font-weight: 300;
-
 }
 
 .form-kn input,
@@ -1115,11 +1113,9 @@ footer {
 }
 
 .recruitment .cf-sb {
-
+    margin-left: 15px;
     margin-bottom: 0;
-
     margin-top: 15px;
-
     background: #f78239;
 
 }
@@ -1394,3 +1390,14 @@ footer {
     width: 100% !important;
     height: 100% !important;
 }
+.content-about img{
+    max-width: 100%;
+    height: auto;
+}
+.map iframe{
+    width: 100%;
+}
+
+/*.map > .google-maps{
+    padding-bottom: 53% !important; 
+}*/

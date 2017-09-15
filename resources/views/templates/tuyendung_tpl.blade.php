@@ -5,53 +5,63 @@
     <section class="recruitment">
         <div class="container">
             <div class="row">
+                <p>
+                    <div class="mess col-sm-12 col-md-12">
+                        @if(session('mess'))
+                            <div class="col-md-12">
+                                <div class="alert alert-success">
+                                    <h5>{{session('mess')}}</h5>
+                                </div>
+                            </div>
+                            
+                        @endif
+                    </div>
+                </p>
                 <div class="col-xs-12 col-md-6 col-left">
                     <h4 class="title-recruitment">Thông tin cá nhân</h4>
-                    <form>
-                        <div class="form-group row">
-                            <label for="name-input" class="col-sm-4 col-form-label ">Họ và tên</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="cf-input" id="name-input" placeholder="" required="">
+                    <form method="post" action="{{ route('postTuyenDung') }}">
+                        <div class="bg-y">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="form-group row">
+                                <label for="name-input" class="col-sm-4 col-form-label ">Họ và tên</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="cf-input" name="txtName" id="name-input" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <label for="address-textarea" class="col-sm-4 col-form-label">Địa chỉ</label>
+
+                                <div class="col-sm-8">
+
+                                    <textarea class="cf-input" name="txtAddress" id="address-textarea" rows="5"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <label for="phone-input" class="col-sm-4 col-form-label ">Điện thoại</label>
+
+                                <div class="col-sm-8">
+
+                                    <input type="text" name="txtPhone" class="cf-input" id="phone-input" placeholder="" required="required">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <label for="email-input" class="col-sm-4 col-form-label ">Email</label>
+
+                                <div class="col-sm-8">
+
+                                    <input type="email" name="txtEmail" class="cf-input" id="email-input" placeholder="" required="required">
+
+                                </div>
                             </div>
                         </div>
-                        
-
-                        <div class="form-group row">
-
-                            <label for="address-textarea" class="col-sm-4 col-form-label">Địa chỉ</label>
-
-                            <div class="col-sm-8">
-
-                                <textarea class="cf-input" id="address-textarea" rows="5"></textarea>
-
-                            </div>
-
+                         <div class="form-group row">
+                            <button class="cf-sub cf-sb" type="submit">Gửi</button>
                         </div>
-
-                        <div class="form-group row">
-
-                            <label for="phone-input" class="col-sm-4 col-form-label ">Điện thoại</label>
-
-                            <div class="col-sm-8">
-
-                                <input type="input" class="cf-input" id="phone-input" placeholder="">
-
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label for="email-input" class="col-sm-4 col-form-label ">Email</label>
-
-                            <div class="col-sm-8">
-
-                                <input type="text" class="cf-input" id="email-input" placeholder="" required="">
-
-                            </div>
-
-                        </div>
-
 
                     </form>
 
@@ -67,9 +77,7 @@
 
                 </div>
 
-                <div class="col-sm-12">
-                    <button class="cf-sub cf-sb" type="submit">Gửi</button>
-                </div>
+               
 
             </div>
 

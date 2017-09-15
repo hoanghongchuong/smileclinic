@@ -101,10 +101,10 @@
 								      	<label for="desc">Code chat</label>
 								      	<textarea name="txtCodechat" rows="5" class="form-control">{{ old('txtCodechat', isset($data) ? $data->codechat : null) }}</textarea>
 									</div>
-									<!-- <div class="form-group">
+									<div class="form-group">
 								      	<label for="desc">Link bản đồ</label>
 								      	<textarea name="txtIframemap" rows="5" class="form-control">{{ old('txtIframemap', isset($data) ? $data->iframemap : null) }}</textarea>
-									</div> -->
+									</div>
 									<div class="form-group">
 								      	<label for="desc">Analytics</label>
 								      	<textarea name="txtAnalytics" rows="5" class="form-control">{{ old('txtAnalytics', isset($data) ? $data->analytics : null) }}</textarea>

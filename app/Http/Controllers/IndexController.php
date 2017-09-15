@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Products;
 use App\NewsLetter;
+use App\Recruitment;
 use DB,Cache,Mail;
 
 class IndexController extends Controller {
@@ -48,7 +49,7 @@ class IndexController extends Controller {
 		$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','index')->get()->first();
 		$tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(12)->get();
 		$com='index';
-		
+		$hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->take(5)->get();
 		$about_dichvu = DB::table('about')->select()->where('com','dich-vu')->get()->first();
 		// Cấu hình SEO
 		$setting = Cache::get('setting');
@@ -59,7 +60,7 @@ class IndexController extends Controller {
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
 
-		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about_dichvu','tintuc_moinhat','keyword','description','title','img_share'));
+		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about_dichvu','tintuc_moinhat','keyword','description','title','img_share','hot_news'));
 	}
 	public function getProduct()
 	{
@@ -132,7 +133,7 @@ class IndexController extends Controller {
 	}
 	public function getAbout()
 	{
-		// $about = DB::table('about')->select()->where('com','gioi-thieu')->get()->first();
+		$about = DB::table('about')->select()->get()->first();
 		// $slider_about = DB::table('lienket')->select()->where('status',1)->where('com','gioi-thieu')->orderby('stt','asc')->get();
 		// $banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','gioi-thieu')->get()->first();
 		// $setting = Cache::get('setting');
@@ -147,6 +148,7 @@ class IndexController extends Controller {
 		// $img_share = asset('upload/hinhanh/'.$about->photo);
 
 		// End cấu hình SEO
+
 		return view('templates.about_tpl', compact('about','slider_about','banner_danhmuc','keyword','description','title','img_share'));
 	}
 	public function search(Request $request)
@@ -167,10 +169,11 @@ class IndexController extends Controller {
 	}
 	public function getNews()
 	{
-		$tintuc = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('created_at','desc')->paginate(6);
+		$tintuc = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('created_at','desc')->limit(6)->get();
+
 		$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','tin-tuc')->get()->first();
 		$tintuc_noibat = DB::table('news')->select()->where('status',1)->where('noibat','>',0)->where('com','tin-tuc')->take(12)->get();
-		$camnhan_khachhang = DB::table('lienket')->select()->where('status',1)->where('com','cam-nhan')->orderby('stt','asc')->get();
+		// $camnhan_khachhang = DB::table('lienket')->select()->where('status',1)->where('com','cam-nhan')->orderby('stt','asc')->get();
 
 		// Cấu hình SEO
 		$title = "Tin tức";
@@ -407,7 +410,15 @@ class IndexController extends Controller {
 	public function getTuyenDung(){
 		return view('templates.tuyendung_tpl');
 	}
-
+	public function postTuyenDung(Request $request){
+		$data = new Recruitment;
+		$data->name = $request->txtName;
+		$data->phone = $request->txtPhone;
+		$data->email = $request->txtEmail;
+		$data->address = $request->txtAddress;
+		$data->save();
+		return redirect()->back()->with('mess','Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
+	}
 
 
 }

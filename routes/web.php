@@ -31,7 +31,7 @@ Route::get('dich-vu/{id}',['as'=>'getDichVuList', 'uses'=>'IndexController@getDi
 Route::get('chi-tiet-dich-vu/{id}.html',['as'=>'getDichVuDetail', 'uses'=>'IndexController@getDichVuDetail']);
 
 Route::get('tuyen-dung','IndexController@getTuyenDung')->name('getTuyenDung');
-
+Route::post('tuyen-dung',['as'=>'postTuyenDung', 'uses'=>'IndexController@postTuyenDung']);
 Route::get('thu-vien-anh',['as'=>'getThuvienanh', 'uses'=>'IndexController@getThuvienanh']);
 
 Route::get('hoi-vien',['as'=>'getHoivien', 'uses'=>'IndexController@getHoivien']);
@@ -58,6 +58,7 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 	Route::post('setting/update',['as'=>'admin.setting.update','uses'=>'Admin\SettingController@update']);
 	
 	Route::post('contact/access',['as'=>'admin.contact.access','uses'=>'Admin\ContactController@xuly']);
+	Route::post('recruitment/access',['as'=>'admin.recruitment.access','uses'=>'Admin\RecruitmentController@accessRe']);
 
 	Route::group(['prefix' => 'users'], function(){
 		Route::get('info',['as'=>'admin.users.getAdmin','uses'=>'Admin\UsersController@getAdmin']);
@@ -159,6 +160,12 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 		Route::get('/','Admin\ContactController@getContact')->name('admin.contact.index');
 		Route::get('delete/{id}','Admin\ContactController@deleteContact')->name('delete.contact');
 	});
+	Route::group(['prefix' => 'recruitment'], function(){
+		Route::get('/',['as'=>'admin.recruitment.index', 'uses'=>'Admin\RecruitmentController@getRecruitment']);
+		Route::get('delete/{id}',['as' => 'admin.delete.recruitment', 'uses'=>'Admin\RecruitmentController@deleteRecruitment']);
+
+	});
+
 	Route::group(['prefix' => 'newsletter'], function(){
 		Route::get('/',['as'=>'admin.newsletter.index','uses'=>'Admin\NewsLetterController@getList']);
 		Route::get('add',['as'=>'admin.newsletter.getAdd','uses'=>'Admin\NewsLetterController@getAdd']);

@@ -137,7 +137,7 @@
 			    <div class="col-md-6">
 			    	<div class="form-group">
 					    <label>
-				        	<input type="checkbox" name="hotnews" >
+				        	<input type="checkbox" name="noibat" >
 				        	Tin hot
 				    	</label>
 					</div>

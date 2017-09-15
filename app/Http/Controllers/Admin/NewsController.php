@@ -90,7 +90,7 @@ class NewsController extends Controller
         $news->mota = $request->txtDesc;
         $news->photo = $img_name;
         $news->background = $img_name2;
-        $news->noibat = $request->hotnews;
+        // $news->noibat = $request->hotnews;
         $news->title = $request->txtTitle;
         $news->content = $request->txtContent;
         $news->keyword = $request->txtKeyword;
@@ -98,12 +98,19 @@ class NewsController extends Controller
         $news->com = $com;
         
         $news->stt = intval($request->stt);
+        if($request->noibat=='on'){
+            $news->noibat = 1;
+        }else{
+            $news->noibat = 0;
+        }
+
+
         if($request->status=='on'){
             $news->status = 1;
         }else{
             $news->status = 0;
         }
-        $news->user_id       = Auth::user()->id;
+        $news->user_id = Auth::user()->id;
         $news->save();
         return redirect('admin/news?type='.$com)->with('status','Thêm mới thành công !');
     }
@@ -234,6 +241,11 @@ class NewsController extends Controller
             $news->keyword = $request->txtKeyword;
             $news->description = $request->txtDescription;
             $news->com = $request->txtCom;
+            if($request->noibat=='on'){
+                $news->noibat = 1;
+            }else{
+                $news->noibat = 0;
+            }
             if($request->status=='on'){
                 $news->status = 1;
             }else{

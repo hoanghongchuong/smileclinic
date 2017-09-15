@@ -55,16 +55,16 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-4">
                         <div class="news-index_image">
-                            <a href="" title=""><img src="{{asset('public/images/news-index.png')}}" alt="" title=""> </a>
+                            <a href="{{ asset('tin-tuc/'.$hot_news[0]->alias.'.html') }}" title=""><img src="{{ asset('upload/news/'.$hot_news[0]->photo)}}" alt="" title=""> </a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-8">
                         <div class="news-index_text">
-                            <h4 class="news-index_title"><a href="" title="">Nguy cơ mới về ung thư miệng</a> </h4>
-                            <p class="date-upload">Ngày upload: 05/09/2016</p>
-                            <p class="news-index_desc">Nhiều người cho rằng, nếu chừng nào ngủ dậy mà không vệ sinh được răng miệng sạch sẽ, họ sẽ không muốn làm gì và cũng không tự tin giao tiếp với ai. Thông thường mọi người thường có thói quen ngủ dậy đánh răng, sau đó ăn sáng và cứ thế đến trưa lại ăn. Thực ra, đó là quy trình không đúng. Đồ ăn trong buổi sáng sẽ bám vào răng và làm hỏng răng.
+                            <h4 class="news-index_title"><a href="{{ asset('tin-tuc/'.$hot_news[0]->alias.'.html') }}" title="">{{$hot_news[0]->name}}</a> </h4>
+                            <p class="date-upload">Ngày upload: {{date('d/m/Y',strtotime($hot_news[0]->created_at))}}</p>
+                            <p class="news-index_desc">{{$hot_news[0]->mota}}
                             </p>
-                            <p class="text-right read-more"><a href="" title="">Xem thêm</a> </p>
+                            <p class="text-right read-more"><a href="{{ asset('tin-tuc/'.$hot_news[0]->alias.'.html') }}" title="">Xem thêm</a> </p>
                         </div>
                     </div>
                 </div>
@@ -75,38 +75,16 @@
     <section class="project-index">
         <div class="container">
             <div class="owl-carousel  owl-theme project-slider">
+                @for($i=1; $i< count($hot_news); $i++)
                 <div class="productIndex-item">
                     <div class="projectIndex-image">
-                        <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('public/images/project1.png')}}"></a>
+                        <a href="{{ asset('tin-tuc/'.$hot_news[$i]->alias.'.html') }}" title="{{ $hot_news[$i]->name }}"><img alt="" src="{{ asset('upload/news/'.$hot_news[$i]->photo)}}"></a>
                     </div>
                     <div class="projectIndex-text">
-                        <a href="chitiet-tintuc.html" title="">Đánh răng là một hoạt động cần thiết  chúng ta đều phải thực hiện hàng ngày ngay cả trẻ nhỏ cũng vậy, tuy nhiên nếu đánh răng thôi vẫn chưa đủ mà cần phải thực hiện đánh răng đúng cách</a>
+                        <a href="{{ asset('tin-tuc/'.$hot_news[$i]->alias.'.html') }}" title="{{ $hot_news[$i]->name }}">{{ $hot_news[$i]->name }}</a>
                     </div>
                 </div>
-                <div class="productIndex-item">
-                    <div class="projectIndex-image">
-                        <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('public/images/project2.png')}}"></a>
-                    </div>
-                    <div class="projectIndex-text">
-                        <a href="chitiet-tintuc.html" title="">Đánh răng là một hoạt động cần thiết  chúng ta đều phải thực hiện hàng ngày ngay cả trẻ nhỏ cũng vậy, tuy nhiên nếu đánh răng thôi vẫn chưa đủ mà cần phải thực hiện đánh răng đúng cách</a>
-                    </div>
-                </div>
-                <div class="productIndex-item">
-                    <div class="projectIndex-image">
-                        <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('public/images/project3.png')}}"></a>
-                    </div>
-                    <div class="projectIndex-text">
-                        <a href="chitiet-tintuc.html" title="">Đánh răng là một hoạt động cần thiết  chúng ta đều phải thực hiện hàng ngày ngay cả trẻ nhỏ cũng vậy, tuy nhiên nếu đánh răng thôi vẫn chưa đủ mà cần phải thực hiện đánh răng đúng cách</a>
-                    </div>
-                </div>
-                <div class="productIndex-item">
-                    <div class="projectIndex-image">
-                        <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('public/images/project4.png')}}"></a>
-                    </div>
-                    <div class="projectIndex-text">
-                        <a href="chitiet-tintuc.html" title="">Đánh răng là một hoạt động cần thiết  chúng ta đều phải thực hiện hàng ngày ngay cả trẻ nhỏ cũng vậy, tuy nhiên nếu đánh răng thôi vẫn chưa đủ mà cần phải thực hiện đánh răng đúng cách</a>
-                    </div>
-                </div>
+                @endfor
             </div>
         </div>
     </section>

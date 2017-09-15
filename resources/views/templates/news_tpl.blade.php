@@ -13,17 +13,16 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-5">
                             <div class="hot-news-image">
-                                <a href="#" title=""><img alt="" src="images/news.jpg"> </a>
+                                <a href="{{ asset('tin-tuc/'.$tintuc[0]->alias.'.html') }}" title=""><img alt="" src="{{ asset('upload/news/'.$tintuc[0]->photo)}}"> </a>
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-7">
                             <div class="hot-news-text">
-                                <h4 class="title-hot-news"><a href="chitiet-tintuc.html" title="">Quận 1 dỡ bỏ bồn cây khách sạn trăm tuổi Majestic</a> </h4>
-                                <p class="date-upload">Ngày upload: 05/09/2016</p>
-                                <p>Khi Jared Kushner hội kiến Thủ tướng Iraq Haider al-Abadi, con rể Trump như một mình đóng hai vai, ngoại trưởng và cố vấn an ninh quốc gia, trong chuyến công du quan trọng này.</p>
-                                <p>Chuyến công tác khác thường của Kushner đến Baghdad củng cố quyền lực đặc biệt của ông trong Nhà Trắng. Trong một bộ máy ở Nhà Trắng mà các phe phái cạnh tranh lẫn nhau, dưới sự lãnh đạo của một tổng thống đòi hỏi sự trung thành tuyệt đối thì sự thăng tiến và quyền lực gần như bất khả xâm phạm của Kushner dựa trên mối quan hệ gia đình với ông Trump. </p>
+                                <h4 class="title-hot-news"><a href="{{ asset('tin-tuc/'.$tintuc[0]->alias.'.html') }}" title="">{{ $tintuc[0]->name }}</a> </h4>
+                                <p class="date-upload">Ngày upload: {{ date('d/m/Y', strtotime($tintuc[0]->created_at))}}</p>
+                                <p> {{ $tintuc[0]->mota }}</p>
                                 <p class="read-more text-right">
-                                    <a href="chitiet-tintuc.html" title="">Xem chi tiết</a>
+                                    <a href="{{ asset('tin-tuc/'.$tintuc[0]->alias.'.html') }}" title="">Xem chi tiết</a>
                                 </p>
                             </div>
                         </div>
@@ -34,21 +33,20 @@
                 <div class="container">
                     <div class="">
                         <div class="news-group">
-                        @foreach($tintuc as $item)
-                            <div class="news-item">
-                                <p class="newsItem-image">
-                                    <a href="{!! asset('tin-tuc/'.$item->alias.'.html') !!}" title=""><img alt="" src="{!! asset('upload/news/'.$item->photo) !!}" title=""> </a>
-                                </p>
-                                <p class="newsItem-name">
-                                    <a href="#" title=""> {{$item->name}}</a>
-                                </p>
-                                <p class="date-upload">Cập nhật: <?=date('d/m/Y',strtotime($item->created_at))?></p>
-                                <p class="newsItem-desc">{{$item->mota}}</p>
-                            </div>
-                        @endforeach    
-
+                      
+                            @for($i=1; $i< count($tintuc); $i++)
+                                <div class="news-item">
+                                    <p class="newsItem-image">
+                                        <a href="{!! asset('tin-tuc/'.$tintuc[$i]->alias.'.html') !!}" title=""><img alt="" src="{!! asset('upload/news/'.$tintuc[$i]->photo) !!}" title=""> </a>
+                                    </p>
+                                    <p class="newsItem-name">
+                                        <a href="{!! asset('tin-tuc/'.$tintuc[$i]->alias.'.html') !!}" title=""> {{$tintuc[$i]->name}}</a>
+                                    </p>
+                                    <p class="date-upload">Cập nhật: <?=date('d/m/Y',strtotime($tintuc[$i]->created_at))?></p>
+                                    <p class="newsItem-desc">{{$tintuc[$i]->mota}}</p>
+                                </div>
+                            @endfor
                         </div>
-
                     </div>
 
                 </div>

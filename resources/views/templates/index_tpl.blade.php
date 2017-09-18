@@ -14,10 +14,10 @@
                 <div class="col-xs-12 col-md-4">
                     <div class="myService-item">
                         <p class="myService-image">
-                            <a href="chitiet-tintuc.html" title=""><img alt="" src="{{asset('upload/news/'.$dv->background)}}" title=""> </a>
+                            <a href="{{url('dich-vu/'.$dv->alias)}}" title=""><img alt="" src="{{asset('upload/news/'.$dv->background)}}" title=""> </a>
                         </p>
                         <p class="myService-text">
-                            <a href="chitiet-tintuc.html" title="">{{$dv->name}}</a>
+                            <a href="{{url('dich-vu/'.$dv->alias)}}" title="">{{$dv->name}}</a>
                         </p>
                         <p class="myService-desc">{{$dv->mota}}</p>
                     </div>

@@ -123,9 +123,9 @@
                                         <td class="text-center with_dieuhuong">
                                             <button class="btn btn-{{ !$item->status? 'warning btn-access' : 'success' }} btn-sm" recruitment-id="{{ $item->id }}">
                                                 @if(!$item->status)
-                                                chưa xử lý
+                                                Chưa xử lý
                                                 @else
-                                                đã xử lý
+                                                Đã xử lý
                                                 @endif
                                             </button>
                                         </td>

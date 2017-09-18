@@ -11,25 +11,25 @@
                     <div class="header-right">
                         <div class="header-nav text-right visible-desktop">
                             <ul class="list-inline nav-dropdown">
-                                <li class="active">
+                                <li class="@if(!empty($com) && $com=='index') active @endif">
                                     <a href="{{url('')}}" title="">Trang chủ</a>
                                 </li>
-                                <li class="<?php if(@$com == 'gioi-thieu') echo 'active' ?>">
+                                <li class="@if(!empty($com) && $com=='gioi-thieu') active @endif">
                                     <a href="{{asset('gioi-thieu')}}" title="">Giới thiệu</a>
                                 </li>
-                                <li>
+                                <li class="@if(!empty($com) && $com=='tin-tuc') active @endif">
                                     <a href="{{asset('tin-tuc')}}" title="">Tin tức</a>
                                 </li>
                                 <li class="logo">
                                     <a href="{{url('')}}" title=""><img alt="" src="{!! asset('upload/hinhanh/'.$setting->photo) !!}" title=""> </a>
                                 </li>
-                                <li>
+                                <li class="@if(!empty($com) && $com=='dich-vu') active @endif">
                                     <a href="{{asset('dich-vu')}}" title="">Dịch vụ</a>
                                 </li>
-                                <li class="">
+                                <li class="@if(!empty($com) && $com=='tuyen-dung') active @endif">
                                     <a href="{{asset('tuyen-dung')}}" title="">Tuyển dụng</a>
                                 </li>
-                                <li>
+                                <li class="@if(!empty($com) && $com=='lien-he') active @endif">
                                     <a href="{{asset('lien-he')}}" title="">Liên hệ</a>
                                 </li>
                             </ul>

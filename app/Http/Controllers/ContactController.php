@@ -25,7 +25,7 @@ class ContactController extends Controller {
 		$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','lien-he')->get()->first();
 		$chinhanh = DB::table('lienket')->select()->where('status',1)->where('com','chi-nhanh')->orderBy('stt','asc')->get();
 		// End cấu hình SEO
-        return view('templates.contact_tpl', compact('banner_danhmuc','lien-he','chinhanh','about_lienhe','keyword','description','title','img_share'));
+        return view('templates.contact_tpl', compact('banner_danhmuc','lien-he','chinhanh','about_lienhe','keyword','description','title','img_share','com'));
     }
 
     /**
@@ -49,7 +49,9 @@ class ContactController extends Controller {
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
 		]);
-		return redirect()->back()->with('mess','Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
+		echo "<script type='text/javascript'>
+			alert('Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
+			window.location = '".url('/')."' </script>";
 
 
 		// $setting = Cache::get('setting');
@@ -66,9 +68,7 @@ class ContactController extends Controller {
 		// 	$msg->from(Request::input('email_contact'), Request::input('hoten_contact'));
 		// 	$msg->to($setting->email, 'Author sendmail')->subject('Liên hệ từ website');
 		// });
-		// echo "<script type='text/javascript'>
-		// 	alert('Cảm ơn bạn đã gửi yêu cầu. Chúng tôi sẽ liên hệ lại với bạn sớm nhất !');
-		// 	window.location = '".url('/')."' </script>";
+		
 	}
 
 }

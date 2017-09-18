@@ -75,7 +75,7 @@
             
             <li><a href="admin/newscate?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
             <li><a href="admin/news?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Dịch vụ</span></a></li>
-            <li><a href="admin/about/edit?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Giới thiệu dịch vụ</span></a></li>
+            <!-- <li><a href="admin/about/edit?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Giới thiệu dịch vụ</span></a></li> -->
           </ul>
         </li>
         <li><a href="admin/about?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Giới thiệu</span></a></li>
@@ -134,7 +134,7 @@
           <ul class="treeview-menu">
             <!-- <li><a href="admin/lienket?type=slider"><i class="fa fa-circle-o"></i>Quản lý slider</a></li> -->
             <li><a href="admin/slider?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Quản lý slider</span></a></li>
-            <li><a href="admin/lienket?type=chuyen-muc"><i class="fa fa-circle-o"></i> Banner chuyên mục</a></li>
+            <!-- <li><a href="admin/lienket?type=chuyen-muc"><i class="fa fa-circle-o"></i> Banner chuyên mục</a></li> -->
             <!-- <li><a href="admin/lienket?type=chi-nhanh"><i class="fa fa-circle-o"></i> Quản lý chi nhánh</a></li> -->
           </ul>
         </li>

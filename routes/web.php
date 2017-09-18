@@ -26,14 +26,13 @@ Route::get('san-pham',['as'=>'getProduct', 'uses'=>'IndexController@getProduct']
 Route::get('san-pham/{id}',['as'=>'getProductList', 'uses'=>'IndexController@getProductList']);
 
 
-// Route::get('dich-vu',['as'=>'getDichvu', 'uses'=>'IndexController@getDichvu']);
-Route::get('dich-vu',['as'=>'getCateDichvu', 'uses'=>'IndexController@getCateService']);
+Route::get('dich-vu',['as'=>'getDichvu', 'uses'=>'IndexController@getDichvu']);
 
 Route::get('dich-vu/{id}',['as'=>'getDichVuList', 'uses'=>'IndexController@getDichVuList']);
 Route::get('chi-tiet-dich-vu/{id}.html',['as'=>'getDichVuDetail', 'uses'=>'IndexController@getDichVuDetail']);
 
 Route::get('tuyen-dung','IndexController@getTuyenDung')->name('getTuyenDung');
-// Route::post('tuyen-dung',['as'=>'postTuyenDung', 'uses'=>'IndexController@postTuyenDung']);
+Route::post('tuyen-dung',['as'=>'postTuyenDung', 'uses'=>'IndexController@postTuyenDung']);
 // Route::get('thu-vien-anh',['as'=>'getThuvienanh', 'uses'=>'IndexController@getThuvienanh']);
 
 Route::get('hoi-vien',['as'=>'getHoivien', 'uses'=>'IndexController@getHoivien']);

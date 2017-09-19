@@ -50,7 +50,8 @@ class IndexController extends Controller {
 		$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','index')->get()->first();
 		$tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(12)->get();
 		$com='index';
-		$hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->take(5)->get();
+		$hot_news = DB::table('news')->where('status',1)->where('noibat',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(5)->get();
+		// dd($hot_news);
 		$cate_dichvu = DB::table('news_categories')->select()->where('status',1)->where('com','dich-vu')->orderBy('stt','asc')->get();
 		$about_dichvu = DB::table('about')->select()->where('com','dich-vu')->get()->first();
 		// Cấu hình SEO

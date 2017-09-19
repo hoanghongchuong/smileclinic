@@ -19,7 +19,17 @@ class ContactController extends Controller
      * @return void
      */
     public function xuly(Request $req){
-        Contact::where('id', $req->contact_id)->update(['status' => 1]);
+        $contact = Contact::where('id', $req->contact_id)->first();
+        if ($contact) {
+            $contact->toggleStatus()->save();
+            /*truyền thống thì làm như bình thường
+            $contact->status = !$contact->status; // cái này chỉ áp dụng cho trường INT(1) thôi
+            nếu ko là INT(1) thì phải làm thế này
+            $contact->status =  $contact->status == 1 ? 0 : 1;
+            $contact->save();
+            */
+            return (Int)$contact->status;
+        }
     }
 
     public function deleteContact($id){

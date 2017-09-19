@@ -112,15 +112,15 @@
         <div class="box-footer col-md-12">
           <div class="row">
             <div class="col-md-6">
-              <input type="button" onclick="javascript:window.location='admin/newsletter/add?type={{ @$_GET[type] }}'" value="Thêm" class="btn btn-primary" />
-              <button type="button" id="xoahet" class="btn btn-success">Xóa</button>
-              <input type="button" value="Thoát" onclick="javascript:window.location='admin'" class="btn btn-danger" />
+             <!--  <input type="button" onclick="javascript:window.location='admin/newsletter/add?type={{ @$_GET[type] }}'" value="Thêm" class="btn btn-primary" /> -->
+              <!-- <button type="button" id="xoahet" class="btn btn-success">Xóa</button> -->
+              <!-- <input type="button" value="Thoát" onclick="javascript:window.location='admin'" class="btn btn-danger" /> -->
 
             </div>
           </div>
         </div>
         <div class="clearfix"></div>
-        <div class="main_guimail">
+        <!-- <div class="main_guimail">
           <div class="col-md-6 col-xs-12">
               <div class="form-group">
                   <label>Tiêu đề</label>
@@ -151,7 +151,7 @@
               </div>
           </div>
           <div class="clearfix"></div>
-        </div>  
+        </div>  --> 
       </div><!-- /.box -->
     </div><!-- /.col -->
   </div><!-- /.row -->

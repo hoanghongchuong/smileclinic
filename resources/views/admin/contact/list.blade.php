@@ -126,7 +126,7 @@
                                         <!-- <td><?=date('d/m/Y', strtotime($item->created_at))?></td> -->
                                         <!-- <td><img src="{{ asset('upload/hinhanh/'.$item->photo) }}" onerror="this.src='{{ asset('public/admin_assets/images/no-image.jpg') }}';" class="img_product"  alt="NO PHOTO" /></td> -->
                                         <td class="text-center with_dieuhuong">
-                                            <button class="btn btn-{{ !$item->status? 'warning btn-access' : 'success' }} btn-sm" contact-id="{{ $item->id }}">
+                                            <button class="btn-toggle-status btn btn-{{ !$item->status? 'warning btn-access' : 'success' }} btn-sm" contact-id="{{ $item->id }}">
                                                 @if(!$item->status)
                                                 chưa xử lý
                                                 @else
@@ -168,11 +168,11 @@
 </section>
 <!-- /.content -->
 <script>
-    $('.btn-access').on('click', function() {
+    $('.btn-toggle-status').on('click', function() {
         var btn = $(this);
-        if (btn.hasClass('btn-success')) {
-            return;
-        }
+        // if (btn.hasClass('btn-success')) {
+        //     return;
+        // }
         btn.attr('disabled', '');
         $.ajax({
             url: '{{ route("admin.contact.access") }}',
@@ -182,8 +182,15 @@
                 contact_id: btn.attr('contact-id')
             },
             success: function(res) {
-                btn.removeAttr('disabled').removeClass('btn-access').removeClass('btn-warning');
-                btn.text('Đã xử lý').addClass('btn-success');
+                if (res == 1) {
+                    btn.addClass('btn-success').removeClass('btn-warning');
+                    btn.text('Đã xử lý');
+                } 
+                if (res == 0) {
+                    btn.addClass('btn-warning').removeClass('btn-success');
+                    btn.text('Chưa xử lý');
+                }
+                btn.removeAttr('disabled', '');
             }
         });
     });

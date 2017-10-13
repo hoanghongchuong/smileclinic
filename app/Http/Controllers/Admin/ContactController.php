@@ -22,12 +22,7 @@ class ContactController extends Controller
         $contact = Contact::where('id', $req->contact_id)->first();
         if ($contact) {
             $contact->toggleStatus()->save();
-            /*truyền thống thì làm như bình thường
-            $contact->status = !$contact->status; // cái này chỉ áp dụng cho trường INT(1) thôi
-            nếu ko là INT(1) thì phải làm thế này
-            $contact->status =  $contact->status == 1 ? 0 : 1;
-            $contact->save();
-            */
+            
             return (Int)$contact->status;
         }
     }

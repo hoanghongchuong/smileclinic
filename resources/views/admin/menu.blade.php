@@ -78,7 +78,7 @@
             <!-- <li><a href="admin/about/edit?type=dich-vu"><i class="fa fa-circle-o"></i> <span>Giới thiệu dịch vụ</span></a></li> -->
           </ul>
         </li>
-        <li><a href="admin/about?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Giới thiệu</span></a></li>
+        <li><a href="admin/about/edit?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Giới thiệu</span></a></li>
         <li><a href="admin/news?type=tin-tuc"><i class="fa fa-circle-o"></i> <span>Quản lý tin tức</span></a></li>
         <!-- <li class="treeview">
           <a href="#">
